@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bae54492-0fc4-440c-b14a-cd4f820ff96b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/docker-deploy.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/docker-deploy.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tw/luna/FinalTest/service/AWSS3Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tw/luna/FinalTest/service/AWSS3Service.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tw/luna/FinalTest/service/AWSS3Service.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tw/luna/FinalTest/service/AWSS3Service.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +98,7 @@
       <workItem from="1727951225668" duration="3252000" />
       <workItem from="1728022130850" duration="12551000" />
       <workItem from="1728291234243" duration="8067000" />
-      <workItem from="1728375809144" duration="5816000" />
+      <workItem from="1728375809144" duration="7079000" />
     </task>
     <servers />
   </component>

@@ -37,9 +37,9 @@ public class AWSS3Service {
     @PostConstruct
     public void init() {
 
-        // 從環境變量中讀取 AWS 憑證
-        String accessKey = System.getenv("AWS_ACCESS_KEY");
-        String secretKey = System.getenv("AWS_SECRET_KEY");
+        // 使用 AWS SDK 預設的環境變量名稱 AWS_ACCESS_KEY_ID 和 AWS_SECRET_ACCESS_KEY
+        String accessKey = System.getenv("AWS_ACCESS_KEY_ID");
+        String secretKey = System.getenv("AWS_SECRET_ACCESS_KEY");
 
         AwsBasicCredentials awsCreds = AwsBasicCredentials.create(accessKey, secretKey);
 
