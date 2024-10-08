@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bae54492-0fc4-440c-b14a-cd4f820ff96b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/docker-deploy.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/docker-deploy.yml" afterDir="false" />
-    </list>
+    <list default="true" id="bae54492-0fc4-440c-b14a-cd4f820ff96b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -93,7 +91,7 @@
       <workItem from="1727951225668" duration="3252000" />
       <workItem from="1728022130850" duration="12551000" />
       <workItem from="1728291234243" duration="8067000" />
-      <workItem from="1728375809144" duration="4293000" />
+      <workItem from="1728375809144" duration="4897000" />
     </task>
     <servers />
   </component>

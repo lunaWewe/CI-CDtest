@@ -36,8 +36,8 @@ jobs:
           SPRING_DATASOURCE_PASSWORD: ${{ env.SPRING_DATASOURCE_PASSWORD }}
           SPRING_JPA_HIBERNATE_DDL_AUTO: ${{ env.SPRING_JPA_HIBERNATE_DDL_AUTO }}
           SPRING_JPA_DATABASE_PLATFORM: ${{ env.SPRING_JPA_DATABASE_PLATFORM }}
-          AWS_ACCESS_KEY_ID: ${{ env.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ env.AWS_SECRET_ACCESS_KEY }}
+          AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
+          AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
 
       - name: Upload build artifacts  # 上傳構建產物
         uses: actions/upload-artifact@v3
