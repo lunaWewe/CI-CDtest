@@ -28,6 +28,14 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
+      - name: Print AWS Environment Variables (for debug)
+        run: |
+          echo "AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}"
+          echo "AWS_SECRET_ACCESS_KEY=(hidden for security)"
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
+
       - name: Build and Test with Maven  # 使用 Maven 構建應用並運行測試
         run: mvn clean package
         env:
