@@ -13,8 +13,15 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/lunaWewe/CI-CDtest.git",
+    "accountId": "c9444826-2e1d-437a-a1d6-aec41cf08fb2"
+  }
+}]]></component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Spring Boot.FinalTestApplication.executor": "Run",
     "git-widget-placeholder": "fff",
     "node.js.selected.package.tslint": "(autodetect)"
   }

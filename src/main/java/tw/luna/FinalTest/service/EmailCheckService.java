@@ -72,7 +72,7 @@ public class EmailCheckService {
 					"    </head>\n" +
 					"    <body>\n" +
 					"        <div class=\"container\">\n <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>" +
-					"            <a id=\"key\" href=\"/verify?token=" + token + "\">驗證電子信箱</a>\n" +
+					"            <a id=\"key\" href=\"https://enjoyumm.ddns.net/verify?token=" + token + "\">驗證電子信箱</a>\n" +
 					"        </div>\n" +
 					"    </body>\n" +
 					"</html>";
@@ -92,7 +92,7 @@ public class EmailCheckService {
 		try {
 			MimeMessage message = mailSender.createMimeMessage();
 			MimeMessageHelper helper = new MimeMessageHelper(message, true);
-			String forgetPasswordUrl = "/resetPassword";
+			String forgetPasswordUrl = "http://localhost:8080/resetPassword";
 //    	String htmlContent = "<p>您好，</p>" +
 //                "<p>我們收到了您重設密碼的請求。</p>" +
 //                "<p>點擊以下連結重設您的密碼：</p>" +
@@ -152,6 +152,5 @@ public class EmailCheckService {
 			e.printStackTrace();
 		}
 	}
-
 
 }
