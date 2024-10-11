@@ -92,7 +92,7 @@ public class EmailCheckService {
 		try {
 			MimeMessage message = mailSender.createMimeMessage();
 			MimeMessageHelper helper = new MimeMessageHelper(message, true);
-			String forgetPasswordUrl = "http://localhost:8080/resetPassword";
+			String forgetPasswordUrl = "/resetPassword";
 //    	String htmlContent = "<p>您好，</p>" +
 //                "<p>我們收到了您重設密碼的請求。</p>" +
 //                "<p>點擊以下連結重設您的密碼：</p>" +
