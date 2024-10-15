@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f17a25a3-a7ce-4b26-8ded-4846dc64f981" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/docker-deploy.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/docker-deploy.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,6 +35,10 @@
     &quot;accountId&quot;: &quot;c9444826-2e1d-437a-a1d6-aec41cf08fb2&quot;
   }
 }</component>
+  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
+  <component name="KubernetesApiProvider"><![CDATA[{
+  "isMigrated": true
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -102,7 +106,7 @@
       <workItem from="1728635270267" duration="1570000" />
       <workItem from="1728652744226" duration="1827000" />
       <workItem from="1728900062796" duration="4613000" />
-      <workItem from="1728982596006" duration="1439000" />
+      <workItem from="1728982596006" duration="2510000" />
     </task>
     <servers />
   </component>
