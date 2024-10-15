@@ -3,7 +3,7 @@ name: CI/CD for Maven Project with Docker
 on:
   push:
     branches:
-      - fff  # 當推送到 workingKnow 分支時觸發工作流
+      - fff  # 當推送到 fff 分支時觸發工作流
 
 jobs:
   build:
@@ -11,7 +11,7 @@ jobs:
 
     env:  # 定義全局環境變數
       SPRING_DATASOURCE_URL: jdbc:mysql://db-final1.cfs6q6y6sz3f.ap-southeast-2.rds.amazonaws.com:3306/final
-      SPRING_DATASOURCE_USERNAME: ${{ secrets.DB_USERNAME }}
+      SPRING_DATASOURCE_USERNAME: ${{ secrets.DB_USERNAME }}  # 使用 secrets 更安全
       SPRING_DATASOURCE_PASSWORD: ${{ secrets.DB_PASSWORD }}
       SPRING_JPA_HIBERNATE_DDL_AUTO: none
       SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.MySQLDialect
@@ -39,29 +39,22 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
 
-      - name: Upload build artifacts  # 上傳構建產物
-        uses: actions/upload-artifact@v3
-        with:
-          name: maven-artifacts
-          path: target/*.jar
-
       - name: Log in to Docker Hub  # 登錄 Docker Hub
         run: echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
 
-      - name: Build Docker image  # 構建 Docker 映像
+      - name: Build and Push Docker image  # 同時構建和推送 Docker 映像，減少步驟數量
         run: |
           docker build -t lunawewe/my-app:${{ github.sha }} .
           docker tag lunawewe/my-app:${{ github.sha }} lunawewe/my-app:latest
-      - name: Push Docker image to Docker Hub  # 推送 Docker 映像
-        run: |
           docker push lunawewe/my-app:${{ github.sha }}
           docker push lunawewe/my-app:latest
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
 
     steps:
-      - name: SSH into EC2 and deploy
+      - name: SSH into EC2 and deploy  # 部署到 EC2
         uses: appleboy/ssh-action@v0.1.4
         with:
           host: ${{ secrets.EC2_PUBLIC_IP }}
@@ -69,12 +62,16 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           port: 22
           script: |
+            # 停止並刪除舊容器以節省資源，避免冗餘容器佔用
             sudo docker stop $(sudo docker ps -q) || true
             sudo docker rm $(sudo docker ps -a -q) || true
             sudo docker system prune -a -f
+            # 拉取最新映像，並通過環境變量設定來提供安全的數據庫及密鑰信息
             sudo docker pull lunawewe/my-app:latest
             sudo docker run -d -p 443:443 \
+              -e SPRING_DATASOURCE_URL=${{ env.SPRING_DATASOURCE_URL }} \
+              -e SPRING_DATASOURCE_USERNAME=${{ secrets.DB_USERNAME }} \
+              -e SPRING_DATASOURCE_PASSWORD=${{ secrets.DB_PASSWORD }} \
               -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY }} \
               -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_KEY }} \
               lunawewe/my-app:latest
-          
