@@ -11,8 +11,8 @@ jobs:
 
     env:  # 定義全局環境變數
       SPRING_DATASOURCE_URL: jdbc:mysql://db-final1.cfs6q6y6sz3f.ap-southeast-2.rds.amazonaws.com:3306/final
-      SPRING_DATASOURCE_USERNAME: admin
-      SPRING_DATASOURCE_PASSWORD: Amazon0624
+      SPRING_DATASOURCE_USERNAME: ${{ secrets.SPRING_DATASOURCE_USERNAME }}
+      SPRING_DATASOURCE_PASSWORD: ${{ secrets.SPRING_DATASOURCE_PASSWORD }}
       SPRING_JPA_HIBERNATE_DDL_AUTO: none
       SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.MySQLDialect
       AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
