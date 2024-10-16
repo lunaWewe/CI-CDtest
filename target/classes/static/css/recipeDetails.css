@@ -1,0 +1,99 @@
+/*主畫面*/
+.container {
+  margin: 20px 40px;
+  padding: 20px 60px;
+}
+
+/*料理名稱*/
+.foodName {
+  font-size: xxx-large;
+  text-align: center;
+}
+
+.recipe-info{
+  display: flex;
+  justify-content: center;
+}
+
+/*料理圖片*/
+.recipeImage {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.recipeImage>img{
+  width: 25vw;
+  border-radius: 15px;
+  background-color: transparent;
+}
+
+.recipe-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px; /* 區塊之間的間距 */
+}
+
+/*照片至按鈕區域*/
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center; /*確保子元素在主軸上居中*/
+}
+
+.btnRed,
+.btnYellow {
+  width: 250px; /*佔用 48% 寬度，留有間距*/
+  height: 40px;
+  color: #fff;
+  text-align: center;
+  border-radius: 25px;
+  margin: 5px 10px;
+  border: none;
+  font-size: 25px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btnRed {
+  background-color: #d35b50;
+}
+
+.btnYellow {
+  background-color: #f3ce6e;
+}
+
+.btnRed:hover {
+  background-color: #ca2a1c;
+  transform: scale(1.05);
+}
+
+.btnYellow:hover {
+  background-color: #fad04f;
+  transform: scale(1.05);
+}
+
+
+.ingredient,
+.step,
+.tips{
+  display: flex;
+  justify-content: left;
+  margin-bottom: 30px;
+  margin-left: 250px;
+  flex-direction: column;
+}
+
+.ingredient div,
+.step div,
+.tips div{
+  flex: 1;
+}
+
+.recipeDetails{
+  font-size: 1.3rem;
+}
+
+.recipeTitle{
+  font-size: 1.5rem;
+}
