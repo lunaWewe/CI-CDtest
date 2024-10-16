@@ -5,13 +5,13 @@ RUN apt-get update && \
     apt-get install -y openssl openjdk-17-jdk && \
     apt-get clean
 
-# 使用 Maven 進行構建，基於相同的 Ubuntu 基礎映像
-FROM base AS build
+# 使用 Maven 作為構建階段
+FROM maven:3.8.4-openjdk-17 AS build
 WORKDIR /app
-# 安裝 Maven
-RUN apt-get install -y maven
-# 複製代碼到工作目錄並構建應用
 COPY . .
+
+# 使用 root 權限運行 mvn 命令
+USER root
 RUN mvn clean package -DskipTests
 
 # 最終運行階段，基於相同的 Ubuntu 基礎映像
