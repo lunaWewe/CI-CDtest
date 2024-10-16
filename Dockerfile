@@ -1,3 +1,7 @@
+# 使用 Ubuntu 作為運行階段，以便安裝更新版的 OpenSSL
+FROM ubuntu:20.04 as base
+RUN apt-get update && apt-get install -y openssl
+
 # 使用 Maven 作為構建階段，方便運行測試並構建最終應用
 FROM maven:3.8.4-openjdk-17 AS build
 WORKDIR /app
