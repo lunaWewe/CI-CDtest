@@ -1,28 +1,30 @@
-# 使用 Ubuntu 作為運行階段，以便安裝更新版的 OpenSSL
+# 使用 Ubuntu 作為基礎映像，包含 OpenSSL
 FROM ubuntu:20.04 as base
-RUN apt-get update && apt-get install -y openssl
+# 更新並安裝 openssl 和 OpenJDK 17
+RUN apt-get update && \
+    apt-get install -y openssl openjdk-17-jdk && \
+    apt-get clean
 
-# 使用 Maven 作為構建階段，方便運行測試並構建最終應用
-FROM maven:3.8.4-openjdk-17 AS build
+# 使用 Maven 進行構建，基於相同的 Ubuntu 基礎映像
+FROM base AS build
 WORKDIR /app
+# 安裝 Maven
+RUN apt-get install -y maven
+# 複製代碼到工作目錄並構建應用
 COPY . .
 RUN mvn clean package -DskipTests
 
-# 使用 OpenJDK 17 作為運行階段
-FROM openjdk:17-jdk-alpine
+# 最終運行階段，基於相同的 Ubuntu 基礎映像
+FROM base AS final
 WORKDIR /app
-
-# 安裝 openssl
-RUN apk update && apk add --no-cache openssl
-
-# 複製構建好的應用 JAR 文件到容器中，作為最終運行應用
+# 複製構建好的應用 JAR 文件到容器中
 COPY --from=build /app/target/FinalTest-0.0.1-SNAPSHOT.jar /app/my-app.jar
 
 # 複製加密的 Firebase 密鑰文件到容器內
 COPY src/main/resources/ee85enjoyum-firebase-adminsdk-879hb-b508264fb5.json.enc /app/ee85enjoyum-firebase-adminsdk-879hb-b508264fb5.json.enc
 
-# 替換端口，公開 443 端口
+# 暴露 443 端口
 EXPOSE 443
-CMD ["java", "-jar", "/app/my-app.jar"]
-CMD ["openssl", "version"]
 
+# 設定運行指令
+CMD ["java", "-jar", "/app/my-app.jar"]
