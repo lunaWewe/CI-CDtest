@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="36e1526f-1dd8-4d72-8d13-95400c248e5d" name="Changes" comment="" />
+    <list default="true" id="36e1526f-1dd8-4d72-8d13-95400c248e5d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,12 +19,18 @@
   &quot;keyToString&quot;: {
     &quot;JUnit.FinalTestApplicationTests.contextLoads.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;six&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/wuxinying/CI-CDtest/src/main/resources&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+    </key>
+  </component>
   <component name="RunManager" selected="JUnit.FinalTestApplicationTests.contextLoads">
     <configuration name="FinalTestApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FinalTest" />

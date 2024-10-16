@@ -24,3 +24,5 @@ COPY src/main/resources/ee85enjoyum-firebase-adminsdk-879hb-b508264fb5.json.enc 
 # 替換端口，公開 443 端口
 EXPOSE 443
 CMD ["java", "-jar", "/app/my-app.jar"]
+CMD ["openssl", "version"]
+
