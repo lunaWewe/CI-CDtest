@@ -11,6 +11,9 @@ WORKDIR /app
 # 安裝 openssl
 RUN apk update && apk add --no-cache openssl
 
+# 確認 openssl 已安裝
+RUN openssl version
+
 # 複製構建好的應用 JAR 文件到容器中，作為最終運行應用
 COPY --from=build /app/target/FinalTest-0.0.1-SNAPSHOT.jar /app/my-app.jar
 
