@@ -26,11 +26,8 @@ public class FirebaseService {
             // 使用 openssl 解密 JSON 文件
             ProcessBuilder processBuilder = new ProcessBuilder(
                     "openssl", "enc", "-aes-256-cbc", "-d", "-in", "/app/ee85enjoyum-firebase-adminsdk-879hb-b508264fb5.json.enc",
-                    "-pbkdf2",
                     "-pass", "pass:" + key
             );
-
-
 
             Process process = processBuilder.start();
 
