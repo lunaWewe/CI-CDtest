@@ -1,3 +1,17 @@
+# GitHub Secrets 內的變數清單：
+# DB_USERNAME - 資料庫用戶名
+# DB_PASSWORD - 資料庫密碼
+# AWS_ACCESS_KEY - AWS 存取密鑰
+# AWS_SECRET_KEY - AWS 秘密密鑰
+# SPRING_MAIL_USERNAME - 郵件服務用戶名
+# SPRING_MAIL_PASSWORD - 郵件服務密碼
+# SERVER_SSL_KEY_STORE_PASSWORD - SSL Key Store 密碼
+# AWS_S3_BUCKET_NAME - AWS S3 儲存桶名稱
+# AWS_REGION - AWS 區域
+# EC2_PUBLIC_IP - EC2 伺服器的公有 IP 地址
+# EC2_SSH_KEY - EC2 SSH 密鑰
+
+
 name: CI/CD for Maven Project with Docker
 
 on:
@@ -78,7 +92,9 @@ jobs:
             sudo docker system prune -a -f
             # 拉取最新映像，並通過環境變量設定來提供安全的數據庫及密鑰信息
             sudo docker pull lunawewe/my-app:latest
+            # 使用卷掛載以保證密鑰文件的安全性
             sudo docker run -d -p 443:443 \
+              -v /home/ec2-user/keystore.jks:/app/keystore.jks \
               -e SPRING_DATASOURCE_URL=${{ secrets.SPRING_DATASOURCE_URL }} \
               -e SPRING_DATASOURCE_USERNAME=${{ secrets.DB_USERNAME }} \
               -e SPRING_DATASOURCE_PASSWORD=${{ secrets.DB_PASSWORD }} \

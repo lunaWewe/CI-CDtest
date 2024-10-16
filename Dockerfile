@@ -8,9 +8,6 @@ RUN mvn clean package -DskipTests
 FROM openjdk:17-jdk-alpine
 WORKDIR /app
 
-# 複製 keystore.jks 文件到容器中，以便支持 HTTPS
-COPY src/main/resources/keystore.jks /app/keystore.jks
-
 # 複製構建好的應用 JAR 文件到容器中，作為最終運行應用
 COPY --from=build /app/target/FinalTest-0.0.1-SNAPSHOT.jar /app/my-app.jar
 
