@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f17a25a3-a7ce-4b26-8ded-4846dc64f981" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/docker-deploy.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/docker-deploy.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +106,7 @@
       <workItem from="1728652744226" duration="1827000" />
       <workItem from="1728900062796" duration="4613000" />
       <workItem from="1728982596006" duration="6089000" />
-      <workItem from="1729056812662" duration="1828000" />
+      <workItem from="1729056812662" duration="2912000" />
     </task>
     <servers />
   </component>
