@@ -45,9 +45,9 @@ public class ECPAYService {
             obj.setTotalAmount(postMerchantDto.getTotal().toString());
             obj.setTradeDesc("test Description");
             obj.setItemName("本次購買總金額");
-            obj.setReturnURL("http://localhost:8081/test");
+            obj.setReturnURL("https://enjoyumm.ddns.net:8081/test");
             obj.setNeedExtraPaidInfo("N");
-            obj.setClientBackURL("http://localhost:8080/enjoyum");  //!!!!!!!!!!!!!!!!!!!改自己的首頁!!!!!!!!!!!!!!!!!!!!!!
+            obj.setClientBackURL("https://enjoyumm.ddns.net/enjoyum");  //!!!!!!!!!!!!!!!!!!!改自己的首頁!!!!!!!!!!!!!!!!!!!!!!
             obj.setNeedExtraPaidInfo("Y");
             // 生成表单
             form = all.aioCheckOut(obj, null);
