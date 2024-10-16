@@ -11,11 +11,11 @@ WORKDIR /app
 # 安裝 openssl
 RUN apk update && apk add --no-cache openssl
 
-# 確認 openssl 已安裝
-RUN openssl version
-
 # 複製構建好的應用 JAR 文件到容器中，作為最終運行應用
 COPY --from=build /app/target/FinalTest-0.0.1-SNAPSHOT.jar /app/my-app.jar
+
+# 複製加密的 Firebase 密鑰文件到容器內
+COPY src/main/resources/ee85enjoyum-firebase-adminsdk-879hb-b508264fb5.json.enc /app/ee85enjoyum-firebase-adminsdk-879hb-b508264fb5.json.enc
 
 # 替換端口，公開 443 端口
 EXPOSE 443
