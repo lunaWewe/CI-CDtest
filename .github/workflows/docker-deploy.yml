@@ -87,24 +87,27 @@ jobs:
           port: 22
           script: |
             # 停止並刪除舊容器以節省資源，避免冗餘容器佔用
-            sudo docker stop $(sudo docker ps -q) || true
-            sudo docker rm $(sudo docker ps -a -q) || true
+            RUNNING_CONTAINERS=$(sudo docker ps -q)
+            if [ -n "$RUNNING_CONTAINERS" ]; then
+              sudo docker stop $RUNNING_CONTAINERS
+              sudo docker rm $RUNNING_CONTAINERS
+            fi
             sudo docker system prune -a -f
             # 拉取最新映像，並通過環境變量設定來提供安全的數據庫及密鑰信息
             sudo docker pull lunawewe/my-app:latest
             # 使用卷掛載以保證密鑰文件的安全性
             sudo docker run -d -p 443:443 \
-            -v /home/ec2-user/keystore.jks:/app/keystore.jks \
-            -e SPRING_DATASOURCE_URL=${{ secrets.SPRING_DATASOURCE_URL }} \
-            -e SPRING_DATASOURCE_USERNAME=${{ secrets.DB_USERNAME }} \
-            -e SPRING_DATASOURCE_PASSWORD=${{ secrets.DB_PASSWORD }} \
-            -e SPRING_MAIL_USERNAME=${{ secrets.SPRING_MAIL_USERNAME }} \
-            -e SPRING_MAIL_PASSWORD=${{ secrets.SPRING_MAIL_PASSWORD }} \
-            -e SERVER_SSL_KEY_STORE_PASSWORD=${{ secrets.SERVER_SSL_KEY_STORE_PASSWORD }} \
-            -e AWS_S3_BUCKET_NAME=${{ secrets.AWS_S3_BUCKET_NAME }} \
-            -e AWS_REGION=${{ secrets.AWS_REGION }} \
-            -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY }} \
-            -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_KEY }} \
-            lunawewe/my-app:latest \
-            sh -c "ls -la /app/keystore.jks && java -jar /app/my-app.jar"
+              -v /home/ec2-user/keystore.jks:/app/keystore.jks \
+              -e SPRING_DATASOURCE_URL=${{ secrets.SPRING_DATASOURCE_URL }} \
+              -e SPRING_DATASOURCE_USERNAME=${{ secrets.DB_USERNAME }} \
+              -e SPRING_DATASOURCE_PASSWORD=${{ secrets.DB_PASSWORD }} \
+              -e SPRING_MAIL_USERNAME=${{ secrets.SPRING_MAIL_USERNAME }} \
+              -e SPRING_MAIL_PASSWORD=${{ secrets.SPRING_MAIL_PASSWORD }} \
+              -e SERVER_SSL_KEY_STORE_PASSWORD=${{ secrets.SERVER_SSL_KEY_STORE_PASSWORD }} \
+              -e AWS_S3_BUCKET_NAME=${{ secrets.AWS_S3_BUCKET_NAME }} \
+              -e AWS_REGION=${{ secrets.AWS_REGION }} \
+              -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY }} \
+              -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_KEY }} \
+              lunawewe/my-app:latest
+          
 
