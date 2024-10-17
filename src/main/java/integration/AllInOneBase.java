@@ -1,4 +1,10 @@
+package integration;
+
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+
 import integration.ecpayOperator.EcpayFunction;
 import integration.errorMsg.ErrorMessage;
 import integration.exception.EcpayException;
@@ -35,9 +41,17 @@ public class AllInOneBase {
 					throw new EcpayException("payment_conf.xml not found in the classpath");
 				}
 
-				// 使用 EcpayFunction 來解析 InputStream
-				doc = EcpayFunction.xmlParser(paymentConfStream);
+				// 創建一個臨時文件
+				Path tempFile = Files.createTempFile("payment_conf", ".xml");
+				Files.copy(paymentConfStream, tempFile, StandardCopyOption.REPLACE_EXISTING);
+
+				// 使用臨時文件的路徑
+				doc = EcpayFunction.xmlParser(tempFile.toString());
+
+				// 在解析完成後刪除臨時文件
+				Files.delete(tempFile);
 			}
+
 
 			// 設置文件結構並初始化配置
 			doc.getDocumentElement().normalize();
