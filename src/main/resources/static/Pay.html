@@ -42,7 +42,7 @@ const randomUUID = generateUUID().slice(0, 8); // 取前8碼
 
             onMounted(async () => {
                 try {
-                    const response = await axios.post('http://localhost:8080/api/ECPAY/ecpayCheckout', {
+                    const response = await axios.post('https://enjoyumm.ddns.net/api/ECPAY/ecpayCheckout', {
                         "total": 555,
                         "merchantNo": randomUUID
                     });
