@@ -161,14 +161,6 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<includes>
-					<include>payment_conf.xml</include> <!-- 確保 .xml 文件被包含 -->
-				</includes>
-			</resource>
-		</resources>
 	</build>
 
 </project>
