@@ -38,7 +38,6 @@ jobs:
       AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       ENCRYPTION_KEY: ${{ secrets.ENCRYPTION_KEY }}
-      FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
 
     steps:
       - name: Checkout code  # 檢出代碼
@@ -67,7 +66,6 @@ jobs:
           AWS_REGION: ${{ env.AWS_REGION }}
           OPENAI_API_KEY: ${{ env.OPENAI_API_KEY }}
           ENCRYPTION_KEY: ${{ env.ENCRYPTION_KEY }}
-          FIREBASE_CONFIG: ${{ env.FIREBASE_CONFIG }}
 
 
       - name: Log in to Docker Hub  # 登錄 Docker Hub
@@ -99,12 +97,9 @@ jobs:
               sudo docker rm $RUNNING_CONTAINERS
             fi
             sudo docker system prune -a -f
-
             # 拉取最新映像，並通過環境變量設定來提供安全的數據庫及密鑰信息
             sudo docker pull lunawewe/my-app:latest
-
-            # 使用卷掛載以保證密鑰文件的安全性，並啟用調試模式
-            set -x  # 啟用調試模式
+            # 使用卷掛載以保證密鑰文件的安全性
             sudo docker run -d -p 443:443 \
               -v /home/ec2-user/keystore.jks:/app/keystore.jks \
               -e SPRING_DATASOURCE_URL=${{ secrets.SPRING_DATASOURCE_URL }} \
@@ -119,6 +114,4 @@ jobs:
               -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_KEY }} \
               -e OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} \
               -e ENCRYPTION_KEY=${{ secrets.ENCRYPTION_KEY }} \
-              -e FIREBASE_CONFIG=${{ secrets.FIREBASE_CONFIG }} \
               lunawewe/my-app:latest
-            echo "Docker run finished with exit code $?"

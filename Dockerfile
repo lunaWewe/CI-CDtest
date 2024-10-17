@@ -20,8 +20,8 @@ WORKDIR /app
 # 複製構建好的應用 JAR 文件到容器中
 COPY --from=build /app/target/FinalTest-0.0.1-SNAPSHOT.jar /app/my-app.jar
 
-## 複製加密的 Firebase 密鑰文件到容器內
-#COPY src/main/resources/ee85enjoyum-firebase-adminsdk-879hb-b508264fb5.json.enc /app/ee85enjoyum-firebase-adminsdk-879hb-b508264fb5.json.enc
+# 複製加密的 Firebase 密鑰文件到容器內
+COPY src/main/resources/ee85enjoyum-firebase-adminsdk-879hb-b508264fb5.json.enc /app/ee85enjoyum-firebase-adminsdk-879hb-b508264fb5.json.enc
 
 # 暴露 443 端口
 EXPOSE 443
